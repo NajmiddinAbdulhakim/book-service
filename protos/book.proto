@@ -4,13 +4,13 @@ package book;
 
 
 service BookServcie {
-    rpc Create (Book) returns (Book);
-    rpc Get (BookIdReq) returns (Book);
-    rpc Update (Book) returns (Book);
+    rpc Create (BookReq) returns (BookRes);
+    rpc GetById (BookIdReq) returns (BookRes);
+    rpc Update (UpdateBookReq) returns (BookRes);
     rpc Delete (BookIdReq) returns (DeleteRes);
 }
 
-message Book {
+message UpdateBookReq {
     string id = 1;
     string title = 2;
     string author_name = 3;
@@ -21,6 +21,19 @@ message BookCategory {
     string id = 1;
     string category_name = 2;
 }
+
+message BookRes {
+    string id = 1;
+    string title = 2;
+    string author_name = 3;
+    string category = 4; 
+}
+ message BookReq {
+    string title = 1;
+    string author_name = 2;
+    string category = 3; 
+}
+
 
 message BookIdReq {
     string id = 1;
