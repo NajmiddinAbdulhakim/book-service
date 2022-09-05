@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package book;
+
+
+service BookServcie {
+    rpc Create (Book) returns (Book);
+    rpc Get (BookIdReq) returns (Book);
+    rpc Update (Book) returns (Book);
+    rpc Delete (BookIdReq) returns (DeleteRes);
+}
+
+message Book {
+    string id = 1;
+    string title = 2;
+    string author_name = 3;
+    string category_id = 4; 
+}
+
+message BookCategory { 
+    string id = 1;
+    string category_name = 2;
+}
+
+message BookIdReq {
+    string id = 1;
+}
+
+message DeleteRes {
+    bool success = 1;
+}

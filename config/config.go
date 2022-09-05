@@ -12,7 +12,7 @@ type Config struct {
 	PostgresDB       string
 	PostgresUser     string
 	PostgresPassword string
-	RPCPort         string
+	RPCPort         int
 }
 
 func Load() Config {
@@ -25,7 +25,7 @@ func Load() Config {
 	c.PostgresUser = cast.ToString(look("POSTGRES_USER", "najmiddin"))
 	c.PostgresPassword = cast.ToString(look("POSTGRES_PASSWORD", "1234"))
 
-	c.RPCPort = cast.ToString(look(`RPC_PORT`,))
+	c.RPCPort = cast.ToInt(look(`RPC_PORT`, 9000))
 	
 	return c
 }
