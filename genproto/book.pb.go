@@ -30,7 +30,7 @@ type UpdateBookReq struct {
 	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id"`
 	Title                string   `protobuf:"bytes,2,opt,name=title,proto3" json:"title"`
 	AuthorName           string   `protobuf:"bytes,3,opt,name=author_name,json=authorName,proto3" json:"author_name"`
-	CategoryId           string   `protobuf:"bytes,4,opt,name=category_id,json=categoryId,proto3" json:"category_id"`
+	CategoryName         string   `protobuf:"bytes,4,opt,name=category_name,json=categoryName,proto3" json:"category_name"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -90,9 +90,9 @@ func (m *UpdateBookReq) GetAuthorName() string {
 	return ""
 }
 
-func (m *UpdateBookReq) GetCategoryId() string {
+func (m *UpdateBookReq) GetCategoryName() string {
 	if m != nil {
-		return m.CategoryId
+		return m.CategoryName
 	}
 	return ""
 }
@@ -156,7 +156,7 @@ type BookRes struct {
 	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id"`
 	Title                string   `protobuf:"bytes,2,opt,name=title,proto3" json:"title"`
 	AuthorName           string   `protobuf:"bytes,3,opt,name=author_name,json=authorName,proto3" json:"author_name"`
-	Category             string   `protobuf:"bytes,4,opt,name=category,proto3" json:"category"`
+	CategoryName         string   `protobuf:"bytes,4,opt,name=category_name,json=categoryName,proto3" json:"category_name"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -216,34 +216,34 @@ func (m *BookRes) GetAuthorName() string {
 	return ""
 }
 
-func (m *BookRes) GetCategory() string {
+func (m *BookRes) GetCategoryName() string {
 	if m != nil {
-		return m.Category
+		return m.CategoryName
 	}
 	return ""
 }
 
-type BookReq struct {
+type CreateBookReq struct {
 	Title                string   `protobuf:"bytes,1,opt,name=title,proto3" json:"title"`
 	AuthorName           string   `protobuf:"bytes,2,opt,name=author_name,json=authorName,proto3" json:"author_name"`
-	Category             string   `protobuf:"bytes,3,opt,name=category,proto3" json:"category"`
+	CategoryName         string   `protobuf:"bytes,3,opt,name=category_name,json=categoryName,proto3" json:"category_name"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *BookReq) Reset()         { *m = BookReq{} }
-func (m *BookReq) String() string { return proto.CompactTextString(m) }
-func (*BookReq) ProtoMessage()    {}
-func (*BookReq) Descriptor() ([]byte, []int) {
+func (m *CreateBookReq) Reset()         { *m = CreateBookReq{} }
+func (m *CreateBookReq) String() string { return proto.CompactTextString(m) }
+func (*CreateBookReq) ProtoMessage()    {}
+func (*CreateBookReq) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1e89d0eaa98dc5d8, []int{3}
 }
-func (m *BookReq) XXX_Unmarshal(b []byte) error {
+func (m *CreateBookReq) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *BookReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *CreateBookReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_BookReq.Marshal(b, m, deterministic)
+		return xxx_messageInfo_CreateBookReq.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalTo(b)
@@ -253,58 +253,58 @@ func (m *BookReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return b[:n], nil
 	}
 }
-func (m *BookReq) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_BookReq.Merge(m, src)
+func (m *CreateBookReq) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateBookReq.Merge(m, src)
 }
-func (m *BookReq) XXX_Size() int {
+func (m *CreateBookReq) XXX_Size() int {
 	return m.Size()
 }
-func (m *BookReq) XXX_DiscardUnknown() {
-	xxx_messageInfo_BookReq.DiscardUnknown(m)
+func (m *CreateBookReq) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateBookReq.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_BookReq proto.InternalMessageInfo
+var xxx_messageInfo_CreateBookReq proto.InternalMessageInfo
 
-func (m *BookReq) GetTitle() string {
+func (m *CreateBookReq) GetTitle() string {
 	if m != nil {
 		return m.Title
 	}
 	return ""
 }
 
-func (m *BookReq) GetAuthorName() string {
+func (m *CreateBookReq) GetAuthorName() string {
 	if m != nil {
 		return m.AuthorName
 	}
 	return ""
 }
 
-func (m *BookReq) GetCategory() string {
+func (m *CreateBookReq) GetCategoryName() string {
 	if m != nil {
-		return m.Category
+		return m.CategoryName
 	}
 	return ""
 }
 
-type BookIdReq struct {
+type BookByIdReq struct {
 	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *BookIdReq) Reset()         { *m = BookIdReq{} }
-func (m *BookIdReq) String() string { return proto.CompactTextString(m) }
-func (*BookIdReq) ProtoMessage()    {}
-func (*BookIdReq) Descriptor() ([]byte, []int) {
+func (m *BookByIdReq) Reset()         { *m = BookByIdReq{} }
+func (m *BookByIdReq) String() string { return proto.CompactTextString(m) }
+func (*BookByIdReq) ProtoMessage()    {}
+func (*BookByIdReq) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1e89d0eaa98dc5d8, []int{4}
 }
-func (m *BookIdReq) XXX_Unmarshal(b []byte) error {
+func (m *BookByIdReq) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *BookIdReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *BookByIdReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_BookIdReq.Marshal(b, m, deterministic)
+		return xxx_messageInfo_BookByIdReq.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalTo(b)
@@ -314,44 +314,44 @@ func (m *BookIdReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return b[:n], nil
 	}
 }
-func (m *BookIdReq) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_BookIdReq.Merge(m, src)
+func (m *BookByIdReq) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BookByIdReq.Merge(m, src)
 }
-func (m *BookIdReq) XXX_Size() int {
+func (m *BookByIdReq) XXX_Size() int {
 	return m.Size()
 }
-func (m *BookIdReq) XXX_DiscardUnknown() {
-	xxx_messageInfo_BookIdReq.DiscardUnknown(m)
+func (m *BookByIdReq) XXX_DiscardUnknown() {
+	xxx_messageInfo_BookByIdReq.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_BookIdReq proto.InternalMessageInfo
+var xxx_messageInfo_BookByIdReq proto.InternalMessageInfo
 
-func (m *BookIdReq) GetId() string {
+func (m *BookByIdReq) GetId() string {
 	if m != nil {
 		return m.Id
 	}
 	return ""
 }
 
-type DeleteRes struct {
+type BoolRes struct {
 	Success              bool     `protobuf:"varint,1,opt,name=success,proto3" json:"success"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *DeleteRes) Reset()         { *m = DeleteRes{} }
-func (m *DeleteRes) String() string { return proto.CompactTextString(m) }
-func (*DeleteRes) ProtoMessage()    {}
-func (*DeleteRes) Descriptor() ([]byte, []int) {
+func (m *BoolRes) Reset()         { *m = BoolRes{} }
+func (m *BoolRes) String() string { return proto.CompactTextString(m) }
+func (*BoolRes) ProtoMessage()    {}
+func (*BoolRes) Descriptor() ([]byte, []int) {
 	return fileDescriptor_1e89d0eaa98dc5d8, []int{5}
 }
-func (m *DeleteRes) XXX_Unmarshal(b []byte) error {
+func (m *BoolRes) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *DeleteRes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *BoolRes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_DeleteRes.Marshal(b, m, deterministic)
+		return xxx_messageInfo_BoolRes.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalTo(b)
@@ -361,19 +361,19 @@ func (m *DeleteRes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return b[:n], nil
 	}
 }
-func (m *DeleteRes) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeleteRes.Merge(m, src)
+func (m *BoolRes) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BoolRes.Merge(m, src)
 }
-func (m *DeleteRes) XXX_Size() int {
+func (m *BoolRes) XXX_Size() int {
 	return m.Size()
 }
-func (m *DeleteRes) XXX_DiscardUnknown() {
-	xxx_messageInfo_DeleteRes.DiscardUnknown(m)
+func (m *BoolRes) XXX_DiscardUnknown() {
+	xxx_messageInfo_BoolRes.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_DeleteRes proto.InternalMessageInfo
+var xxx_messageInfo_BoolRes proto.InternalMessageInfo
 
-func (m *DeleteRes) GetSuccess() bool {
+func (m *BoolRes) GetSuccess() bool {
 	if m != nil {
 		return m.Success
 	}
@@ -384,36 +384,35 @@ func init() {
 	proto.RegisterType((*UpdateBookReq)(nil), "book.UpdateBookReq")
 	proto.RegisterType((*BookCategory)(nil), "book.BookCategory")
 	proto.RegisterType((*BookRes)(nil), "book.BookRes")
-	proto.RegisterType((*BookReq)(nil), "book.BookReq")
-	proto.RegisterType((*BookIdReq)(nil), "book.BookIdReq")
-	proto.RegisterType((*DeleteRes)(nil), "book.DeleteRes")
+	proto.RegisterType((*CreateBookReq)(nil), "book.CreateBookReq")
+	proto.RegisterType((*BookByIdReq)(nil), "book.BookByIdReq")
+	proto.RegisterType((*BoolRes)(nil), "book.BoolRes")
 }
 
 func init() { proto.RegisterFile("book.proto", fileDescriptor_1e89d0eaa98dc5d8) }
 
 var fileDescriptor_1e89d0eaa98dc5d8 = []byte{
-	// 335 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x52, 0xc1, 0x4e, 0xea, 0x40,
-	0x14, 0x7d, 0x53, 0x78, 0x05, 0x2e, 0xa0, 0x66, 0x74, 0xd1, 0x60, 0x52, 0x4d, 0x8d, 0x46, 0x8d,
-	0x61, 0xa1, 0x7f, 0x00, 0x26, 0x86, 0x8d, 0x8b, 0x1a, 0x77, 0x26, 0x64, 0xe8, 0xdc, 0x68, 0x43,
-	0x71, 0xa0, 0x1d, 0x34, 0xfc, 0x89, 0xdf, 0xe2, 0x17, 0xb8, 0xf4, 0x13, 0x4c, 0xfd, 0x11, 0x33,
-	0x33, 0x6d, 0x09, 0xc5, 0xb0, 0x72, 0x37, 0xe7, 0xdc, 0x93, 0x73, 0xce, 0xe4, 0x5e, 0x80, 0x91,
-	0x10, 0xe3, 0xee, 0x34, 0x16, 0x52, 0xd0, 0xaa, 0x7a, 0x7b, 0xaf, 0xd0, 0xbe, 0x9f, 0x72, 0x26,
-	0xb1, 0x27, 0xc4, 0xd8, 0xc7, 0x19, 0xdd, 0x02, 0x2b, 0xe4, 0x0e, 0x39, 0x24, 0xa7, 0x0d, 0xdf,
-	0x0a, 0x39, 0xdd, 0x83, 0xff, 0x32, 0x94, 0x11, 0x3a, 0x96, 0xa6, 0x0c, 0xa0, 0x07, 0xd0, 0x64,
-	0x73, 0xf9, 0x24, 0xe2, 0xe1, 0x33, 0x9b, 0xa0, 0x53, 0xd1, 0x33, 0x30, 0xd4, 0x2d, 0x9b, 0x68,
-	0x41, 0xc0, 0x24, 0x3e, 0x8a, 0x78, 0x31, 0x0c, 0xb9, 0x53, 0x35, 0x82, 0x9c, 0x1a, 0x70, 0xaf,
-	0x0f, 0x2d, 0x15, 0xd9, 0xcf, 0x98, 0xb5, 0xdc, 0x23, 0x68, 0x17, 0x06, 0x3a, 0xc3, 0xe4, 0xb7,
-	0x72, 0x52, 0xa5, 0x78, 0x11, 0xd4, 0x4c, 0xef, 0xe4, 0xaf, 0x7a, 0x77, 0xa0, 0x9e, 0x27, 0x64,
-	0xa5, 0x0b, 0xec, 0x3d, 0xe4, 0x69, 0xb3, 0xa5, 0x3b, 0xd9, 0xe0, 0x6e, 0x6d, 0x74, 0xaf, 0x94,
-	0xdc, 0xf7, 0xa1, 0xa1, 0xdc, 0x07, 0xfc, 0x97, 0x2d, 0x78, 0xc7, 0xd0, 0xb8, 0xc6, 0x08, 0x25,
-	0xaa, 0xaf, 0x3a, 0x50, 0x4b, 0xe6, 0x41, 0x80, 0x49, 0xa2, 0x15, 0x75, 0x3f, 0x87, 0x97, 0xef,
-	0x04, 0x9a, 0xca, 0xe4, 0x0e, 0xe3, 0x97, 0x20, 0x44, 0x7a, 0x02, 0x76, 0x3f, 0x46, 0x26, 0x91,
-	0xb6, 0xbb, 0x7a, 0xf5, 0x59, 0xff, 0xce, 0x0a, 0x4c, 0xe8, 0x19, 0xd4, 0x6e, 0x50, 0xf6, 0x16,
-	0x03, 0x4e, 0xb7, 0x97, 0x13, 0x5d, 0xa5, 0x2c, 0xbd, 0x00, 0xdb, 0x1c, 0x0c, 0xdd, 0x35, 0x83,
-	0x95, 0xf3, 0x29, 0xab, 0xcf, 0xc1, 0x36, 0xbd, 0xd7, 0x7d, 0x33, 0xa2, 0xf8, 0x56, 0x6f, 0xe7,
-	0x23, 0x75, 0xc9, 0x67, 0xea, 0x92, 0xaf, 0xd4, 0x25, 0x6f, 0xdf, 0xee, 0xbf, 0x91, 0xad, 0x2f,
-	0xf5, 0xea, 0x27, 0x00, 0x00, 0xff, 0xff, 0x15, 0xb0, 0xb9, 0xe2, 0xb7, 0x02, 0x00, 0x00,
+	// 318 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x52, 0xc1, 0x4e, 0x83, 0x40,
+	0x14, 0x74, 0x69, 0x05, 0x7d, 0x2d, 0x46, 0x57, 0x0f, 0xc4, 0x44, 0x34, 0xf4, 0x62, 0xb4, 0xe9,
+	0x41, 0xff, 0x00, 0x4c, 0x8c, 0x17, 0x0f, 0x18, 0xcf, 0x86, 0xc2, 0x8b, 0x12, 0xa8, 0x5b, 0x97,
+	0xc5, 0xa4, 0xf1, 0x47, 0xfc, 0x1e, 0x4f, 0x1e, 0xfd, 0x04, 0x83, 0x3f, 0x62, 0x76, 0xb7, 0x68,
+	0x6b, 0x49, 0xbd, 0xf5, 0xc6, 0xce, 0x9b, 0xcc, 0xcc, 0x7b, 0x0c, 0xc0, 0x90, 0xb1, 0x6c, 0x30,
+	0xe6, 0x4c, 0x30, 0xda, 0x96, 0xdf, 0xde, 0x0b, 0xd8, 0xb7, 0xe3, 0x24, 0x12, 0xe8, 0x33, 0x96,
+	0x85, 0xf8, 0x44, 0xb7, 0xc0, 0x48, 0x13, 0x87, 0x1c, 0x91, 0xe3, 0xcd, 0xd0, 0x48, 0x13, 0xba,
+	0x07, 0xeb, 0x22, 0x15, 0x39, 0x3a, 0x86, 0x82, 0xf4, 0x83, 0x1e, 0x42, 0x27, 0x2a, 0xc5, 0x03,
+	0xe3, 0x77, 0x8f, 0xd1, 0x08, 0x9d, 0x96, 0x9a, 0x81, 0x86, 0xae, 0xa3, 0x11, 0xd2, 0x1e, 0xd8,
+	0x71, 0x24, 0xf0, 0x9e, 0xf1, 0x89, 0xa6, 0xb4, 0x15, 0xa5, 0x5b, 0x83, 0x92, 0xe4, 0x05, 0xd0,
+	0x95, 0xb6, 0xc1, 0x14, 0x5b, 0xf0, 0x5e, 0x10, 0x31, 0x1a, 0x44, 0x4a, 0xb0, 0x74, 0xf6, 0x62,
+	0xa5, 0xd9, 0x33, 0xb0, 0x03, 0x8e, 0x33, 0x87, 0xfb, 0x31, 0x23, 0x4b, 0xcc, 0x8c, 0xff, 0xcd,
+	0x5a, 0x0d, 0x66, 0x07, 0xd0, 0x91, 0x36, 0xfe, 0xe4, 0x2a, 0x69, 0xf8, 0x47, 0x5e, 0x4f, 0x9d,
+	0x20, 0x97, 0x27, 0x70, 0xc0, 0x2a, 0xca, 0x38, 0xc6, 0xa2, 0x50, 0xf3, 0x8d, 0xb0, 0x7e, 0x9e,
+	0xbd, 0x11, 0x2d, 0x72, 0x83, 0xfc, 0x39, 0x4e, 0x91, 0xf6, 0xc1, 0xd4, 0x0b, 0xd0, 0xdd, 0x81,
+	0xaa, 0xc5, 0xdc, 0x3a, 0xfb, 0xb6, 0x06, 0xeb, 0xd3, 0x9e, 0x82, 0x75, 0x89, 0x42, 0x06, 0xa0,
+	0x3b, 0xbf, 0x93, 0x69, 0xa0, 0xbf, 0xe4, 0x3e, 0x98, 0xba, 0x54, 0xb5, 0xf4, 0x5c, 0xc5, 0x66,
+	0xd8, 0x2a, 0xf2, 0x09, 0x98, 0x17, 0x98, 0xa3, 0xc0, 0xe5, 0xca, 0x92, 0xeb, 0x6f, 0xbf, 0x57,
+	0x2e, 0xf9, 0xa8, 0x5c, 0xf2, 0x59, 0xb9, 0xe4, 0xf5, 0xcb, 0x5d, 0x1b, 0x9a, 0xaa, 0xcd, 0xe7,
+	0xdf, 0x01, 0x00, 0x00, 0xff, 0xff, 0x41, 0x2e, 0x35, 0x3b, 0xdb, 0x02, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -428,10 +427,10 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type BookServcieClient interface {
-	Create(ctx context.Context, in *BookReq, opts ...grpc.CallOption) (*BookRes, error)
-	GetById(ctx context.Context, in *BookIdReq, opts ...grpc.CallOption) (*BookRes, error)
-	Update(ctx context.Context, in *UpdateBookReq, opts ...grpc.CallOption) (*BookRes, error)
-	Delete(ctx context.Context, in *BookIdReq, opts ...grpc.CallOption) (*DeleteRes, error)
+	Create(ctx context.Context, in *CreateBookReq, opts ...grpc.CallOption) (*BookRes, error)
+	GetById(ctx context.Context, in *BookByIdReq, opts ...grpc.CallOption) (*BookRes, error)
+	Update(ctx context.Context, in *UpdateBookReq, opts ...grpc.CallOption) (*BoolRes, error)
+	Delete(ctx context.Context, in *BookByIdReq, opts ...grpc.CallOption) (*BoolRes, error)
 }
 
 type bookServcieClient struct {
@@ -442,7 +441,7 @@ func NewBookServcieClient(cc *grpc.ClientConn) BookServcieClient {
 	return &bookServcieClient{cc}
 }
 
-func (c *bookServcieClient) Create(ctx context.Context, in *BookReq, opts ...grpc.CallOption) (*BookRes, error) {
+func (c *bookServcieClient) Create(ctx context.Context, in *CreateBookReq, opts ...grpc.CallOption) (*BookRes, error) {
 	out := new(BookRes)
 	err := c.cc.Invoke(ctx, "/book.BookServcie/Create", in, out, opts...)
 	if err != nil {
@@ -451,7 +450,7 @@ func (c *bookServcieClient) Create(ctx context.Context, in *BookReq, opts ...grp
 	return out, nil
 }
 
-func (c *bookServcieClient) GetById(ctx context.Context, in *BookIdReq, opts ...grpc.CallOption) (*BookRes, error) {
+func (c *bookServcieClient) GetById(ctx context.Context, in *BookByIdReq, opts ...grpc.CallOption) (*BookRes, error) {
 	out := new(BookRes)
 	err := c.cc.Invoke(ctx, "/book.BookServcie/GetById", in, out, opts...)
 	if err != nil {
@@ -460,8 +459,8 @@ func (c *bookServcieClient) GetById(ctx context.Context, in *BookIdReq, opts ...
 	return out, nil
 }
 
-func (c *bookServcieClient) Update(ctx context.Context, in *UpdateBookReq, opts ...grpc.CallOption) (*BookRes, error) {
-	out := new(BookRes)
+func (c *bookServcieClient) Update(ctx context.Context, in *UpdateBookReq, opts ...grpc.CallOption) (*BoolRes, error) {
+	out := new(BoolRes)
 	err := c.cc.Invoke(ctx, "/book.BookServcie/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -469,8 +468,8 @@ func (c *bookServcieClient) Update(ctx context.Context, in *UpdateBookReq, opts 
 	return out, nil
 }
 
-func (c *bookServcieClient) Delete(ctx context.Context, in *BookIdReq, opts ...grpc.CallOption) (*DeleteRes, error) {
-	out := new(DeleteRes)
+func (c *bookServcieClient) Delete(ctx context.Context, in *BookByIdReq, opts ...grpc.CallOption) (*BoolRes, error) {
+	out := new(BoolRes)
 	err := c.cc.Invoke(ctx, "/book.BookServcie/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -480,26 +479,26 @@ func (c *bookServcieClient) Delete(ctx context.Context, in *BookIdReq, opts ...g
 
 // BookServcieServer is the server API for BookServcie service.
 type BookServcieServer interface {
-	Create(context.Context, *BookReq) (*BookRes, error)
-	GetById(context.Context, *BookIdReq) (*BookRes, error)
-	Update(context.Context, *UpdateBookReq) (*BookRes, error)
-	Delete(context.Context, *BookIdReq) (*DeleteRes, error)
+	Create(context.Context, *CreateBookReq) (*BookRes, error)
+	GetById(context.Context, *BookByIdReq) (*BookRes, error)
+	Update(context.Context, *UpdateBookReq) (*BoolRes, error)
+	Delete(context.Context, *BookByIdReq) (*BoolRes, error)
 }
 
 // UnimplementedBookServcieServer can be embedded to have forward compatible implementations.
 type UnimplementedBookServcieServer struct {
 }
 
-func (*UnimplementedBookServcieServer) Create(ctx context.Context, req *BookReq) (*BookRes, error) {
+func (*UnimplementedBookServcieServer) Create(ctx context.Context, req *CreateBookReq) (*BookRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
-func (*UnimplementedBookServcieServer) GetById(ctx context.Context, req *BookIdReq) (*BookRes, error) {
+func (*UnimplementedBookServcieServer) GetById(ctx context.Context, req *BookByIdReq) (*BookRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetById not implemented")
 }
-func (*UnimplementedBookServcieServer) Update(ctx context.Context, req *UpdateBookReq) (*BookRes, error) {
+func (*UnimplementedBookServcieServer) Update(ctx context.Context, req *UpdateBookReq) (*BoolRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
-func (*UnimplementedBookServcieServer) Delete(ctx context.Context, req *BookIdReq) (*DeleteRes, error) {
+func (*UnimplementedBookServcieServer) Delete(ctx context.Context, req *BookByIdReq) (*BoolRes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
 
@@ -508,7 +507,7 @@ func RegisterBookServcieServer(s *grpc.Server, srv BookServcieServer) {
 }
 
 func _BookServcie_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BookReq)
+	in := new(CreateBookReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -520,13 +519,13 @@ func _BookServcie_Create_Handler(srv interface{}, ctx context.Context, dec func(
 		FullMethod: "/book.BookServcie/Create",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BookServcieServer).Create(ctx, req.(*BookReq))
+		return srv.(BookServcieServer).Create(ctx, req.(*CreateBookReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _BookServcie_GetById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BookIdReq)
+	in := new(BookByIdReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -538,7 +537,7 @@ func _BookServcie_GetById_Handler(srv interface{}, ctx context.Context, dec func
 		FullMethod: "/book.BookServcie/GetById",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BookServcieServer).GetById(ctx, req.(*BookIdReq))
+		return srv.(BookServcieServer).GetById(ctx, req.(*BookByIdReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -562,7 +561,7 @@ func _BookServcie_Update_Handler(srv interface{}, ctx context.Context, dec func(
 }
 
 func _BookServcie_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BookIdReq)
+	in := new(BookByIdReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -574,7 +573,7 @@ func _BookServcie_Delete_Handler(srv interface{}, ctx context.Context, dec func(
 		FullMethod: "/book.BookServcie/Delete",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BookServcieServer).Delete(ctx, req.(*BookIdReq))
+		return srv.(BookServcieServer).Delete(ctx, req.(*BookByIdReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -637,11 +636,11 @@ func (m *UpdateBookReq) MarshalTo(dAtA []byte) (int, error) {
 		i = encodeVarintBook(dAtA, i, uint64(len(m.AuthorName)))
 		i += copy(dAtA[i:], m.AuthorName)
 	}
-	if len(m.CategoryId) > 0 {
+	if len(m.CategoryName) > 0 {
 		dAtA[i] = 0x22
 		i++
-		i = encodeVarintBook(dAtA, i, uint64(len(m.CategoryId)))
-		i += copy(dAtA[i:], m.CategoryId)
+		i = encodeVarintBook(dAtA, i, uint64(len(m.CategoryName)))
+		i += copy(dAtA[i:], m.CategoryName)
 	}
 	if m.XXX_unrecognized != nil {
 		i += copy(dAtA[i:], m.XXX_unrecognized)
@@ -715,11 +714,11 @@ func (m *BookRes) MarshalTo(dAtA []byte) (int, error) {
 		i = encodeVarintBook(dAtA, i, uint64(len(m.AuthorName)))
 		i += copy(dAtA[i:], m.AuthorName)
 	}
-	if len(m.Category) > 0 {
+	if len(m.CategoryName) > 0 {
 		dAtA[i] = 0x22
 		i++
-		i = encodeVarintBook(dAtA, i, uint64(len(m.Category)))
-		i += copy(dAtA[i:], m.Category)
+		i = encodeVarintBook(dAtA, i, uint64(len(m.CategoryName)))
+		i += copy(dAtA[i:], m.CategoryName)
 	}
 	if m.XXX_unrecognized != nil {
 		i += copy(dAtA[i:], m.XXX_unrecognized)
@@ -727,7 +726,7 @@ func (m *BookRes) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
-func (m *BookReq) Marshal() (dAtA []byte, err error) {
+func (m *CreateBookReq) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalTo(dAtA)
@@ -737,7 +736,7 @@ func (m *BookReq) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *BookReq) MarshalTo(dAtA []byte) (int, error) {
+func (m *CreateBookReq) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
@@ -754,11 +753,11 @@ func (m *BookReq) MarshalTo(dAtA []byte) (int, error) {
 		i = encodeVarintBook(dAtA, i, uint64(len(m.AuthorName)))
 		i += copy(dAtA[i:], m.AuthorName)
 	}
-	if len(m.Category) > 0 {
+	if len(m.CategoryName) > 0 {
 		dAtA[i] = 0x1a
 		i++
-		i = encodeVarintBook(dAtA, i, uint64(len(m.Category)))
-		i += copy(dAtA[i:], m.Category)
+		i = encodeVarintBook(dAtA, i, uint64(len(m.CategoryName)))
+		i += copy(dAtA[i:], m.CategoryName)
 	}
 	if m.XXX_unrecognized != nil {
 		i += copy(dAtA[i:], m.XXX_unrecognized)
@@ -766,7 +765,7 @@ func (m *BookReq) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
-func (m *BookIdReq) Marshal() (dAtA []byte, err error) {
+func (m *BookByIdReq) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalTo(dAtA)
@@ -776,7 +775,7 @@ func (m *BookIdReq) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *BookIdReq) MarshalTo(dAtA []byte) (int, error) {
+func (m *BookByIdReq) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
@@ -793,7 +792,7 @@ func (m *BookIdReq) MarshalTo(dAtA []byte) (int, error) {
 	return i, nil
 }
 
-func (m *DeleteRes) Marshal() (dAtA []byte, err error) {
+func (m *BoolRes) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalTo(dAtA)
@@ -803,7 +802,7 @@ func (m *DeleteRes) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *DeleteRes) MarshalTo(dAtA []byte) (int, error) {
+func (m *BoolRes) MarshalTo(dAtA []byte) (int, error) {
 	var i int
 	_ = i
 	var l int
@@ -851,7 +850,7 @@ func (m *UpdateBookReq) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovBook(uint64(l))
 	}
-	l = len(m.CategoryId)
+	l = len(m.CategoryName)
 	if l > 0 {
 		n += 1 + l + sovBook(uint64(l))
 	}
@@ -899,7 +898,7 @@ func (m *BookRes) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovBook(uint64(l))
 	}
-	l = len(m.Category)
+	l = len(m.CategoryName)
 	if l > 0 {
 		n += 1 + l + sovBook(uint64(l))
 	}
@@ -909,7 +908,7 @@ func (m *BookRes) Size() (n int) {
 	return n
 }
 
-func (m *BookReq) Size() (n int) {
+func (m *CreateBookReq) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -923,7 +922,7 @@ func (m *BookReq) Size() (n int) {
 	if l > 0 {
 		n += 1 + l + sovBook(uint64(l))
 	}
-	l = len(m.Category)
+	l = len(m.CategoryName)
 	if l > 0 {
 		n += 1 + l + sovBook(uint64(l))
 	}
@@ -933,7 +932,7 @@ func (m *BookReq) Size() (n int) {
 	return n
 }
 
-func (m *BookIdReq) Size() (n int) {
+func (m *BookByIdReq) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -949,7 +948,7 @@ func (m *BookIdReq) Size() (n int) {
 	return n
 }
 
-func (m *DeleteRes) Size() (n int) {
+func (m *BoolRes) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1097,7 +1096,7 @@ func (m *UpdateBookReq) Unmarshal(dAtA []byte) error {
 			iNdEx = postIndex
 		case 4:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field CategoryId", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field CategoryName", wireType)
 			}
 			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
@@ -1125,7 +1124,7 @@ func (m *UpdateBookReq) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.CategoryId = string(dAtA[iNdEx:postIndex])
+			m.CategoryName = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
@@ -1397,7 +1396,7 @@ func (m *BookRes) Unmarshal(dAtA []byte) error {
 			iNdEx = postIndex
 		case 4:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Category", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field CategoryName", wireType)
 			}
 			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
@@ -1425,7 +1424,7 @@ func (m *BookRes) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Category = string(dAtA[iNdEx:postIndex])
+			m.CategoryName = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
@@ -1452,7 +1451,7 @@ func (m *BookRes) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *BookReq) Unmarshal(dAtA []byte) error {
+func (m *CreateBookReq) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1475,10 +1474,10 @@ func (m *BookReq) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: BookReq: wiretype end group for non-group")
+			return fmt.Errorf("proto: CreateBookReq: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: BookReq: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: CreateBookReq: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -1547,7 +1546,7 @@ func (m *BookReq) Unmarshal(dAtA []byte) error {
 			iNdEx = postIndex
 		case 3:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Category", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field CategoryName", wireType)
 			}
 			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
@@ -1575,7 +1574,7 @@ func (m *BookReq) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Category = string(dAtA[iNdEx:postIndex])
+			m.CategoryName = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
@@ -1602,7 +1601,7 @@ func (m *BookReq) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *BookIdReq) Unmarshal(dAtA []byte) error {
+func (m *BookByIdReq) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1625,10 +1624,10 @@ func (m *BookIdReq) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: BookIdReq: wiretype end group for non-group")
+			return fmt.Errorf("proto: BookByIdReq: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: BookIdReq: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: BookByIdReq: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -1688,7 +1687,7 @@ func (m *BookIdReq) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *DeleteRes) Unmarshal(dAtA []byte) error {
+func (m *BoolRes) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1711,10 +1710,10 @@ func (m *DeleteRes) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: DeleteRes: wiretype end group for non-group")
+			return fmt.Errorf("proto: BoolRes: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: DeleteRes: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: BoolRes: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:

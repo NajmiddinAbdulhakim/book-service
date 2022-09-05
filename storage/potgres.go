@@ -15,11 +15,11 @@ func NewBookRepo(db *sqlx.DB) *bookRepo {
 	return &bookRepo{db}
 }
 
-func (r *bookRepo) Create(ctx context.Context, b *pb.BookReq) (*pb.BookRes, error) {
+func (r *bookRepo) Create(ctx context.Context, b *pb.CreateBookReq) (*pb.BookRes, error) {
 	var categoryId string
 
 	query := `SELECT id FROM book_category WHERE category_name = $1`
-	err := r.db.GetContext(ctx, &categoryId, query, b.Category)
+	err := r.db.GetContext(ctx, &categoryId, query, b.CategoryName)
 	if err != nil {
 		return nil, err
 	}
@@ -37,7 +37,7 @@ func (r *bookRepo) Create(ctx context.Context, b *pb.BookReq) (*pb.BookRes, erro
 		&book.Title,
 		&book.AuthorName,
 	)
-	book.Category = b.Category
+	book.CategoryName = b.CategoryName
 
 	if err != nil {
 		return nil, err
@@ -65,7 +65,7 @@ func (r *bookRepo) Update(ctx context.Context, b *pb.UpdateBookReq) (bool, error
 	var categoryId string
 
 	query := `SELECT id FROM book_category WHERE category_name = $1`
-	err := r.db.GetContext(ctx, &categoryId, query, b.CategoryId)
+	err := r.db.GetContext(ctx, &categoryId, query, b.CategoryName)
 	if err != nil {
 		return false, err
 	}
