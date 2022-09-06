@@ -20,11 +20,11 @@ func Load() Config {
 
 	c.PostgresHost = cast.ToString(look("POSTGRES_HOST", "localhost"))
 	c.PostgresPort = cast.ToInt(look("POSTGRES_HOST", 5432))
-	c.PostgresDB = cast.ToString(look("POSTGRES_DATABASE", "mybook"))
+	c.PostgresDB = cast.ToString(look("POSTGRES_DATABASE", "bk"))
 	c.PostgresUser = cast.ToString(look("POSTGRES_USER", "najmiddin"))
 	c.PostgresPassword = cast.ToString(look("POSTGRES_PASSWORD", "1234"))
 
-	c.RPCPort = cast.ToString(look(`RPC_PORT`, `9000`))
+	c.RPCPort = cast.ToString(look(`RPC_PORT`, `:8888`))
 
 	return c
 }

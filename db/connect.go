@@ -32,14 +32,14 @@ func ConnectDB(cfg config.Config) (*sqlx.DB, error) {
 		return nil, fmt.Errorf("failed to connecting migrate driver")
 	}
 	m, err := migrate.NewWithDatabaseInstance(
-		"file:/home/najmiddin/go/src/github.com/NajmiddinAbdulhakim/mybook/migrations",
+		"file:/home/najmiddin/go/src/github.com/NajmiddinAbdulhakim/ude/book-service/migrations",
 		"postgres", driver,
 	)
 	if err != nil {
 		return nil, fmt.Errorf("failed to connecting migrate :%v", err)
 	}
 
-	if err = m.Up(); err != nil && errors.Is(err, migrate.ErrNoChange) {
+	if err = m.Up(); err != nil && !errors.Is(err, migrate.ErrNoChange) {
 		return nil, fmt.Errorf("failed to migrate: %v", err)
 	}
 	return db, nil

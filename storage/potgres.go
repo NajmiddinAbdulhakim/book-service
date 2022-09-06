@@ -26,7 +26,7 @@ func (r *bookRepo) Create(ctx context.Context, b *pb.CreateBookReq) (*pb.BookRes
 
 	query = `INSERT INTO books (title, author_name, category_id)
 	VALUES($1, $2, $3) 
-	RETURNING id title, author_name`
+	RETURNING id, title, author_name`
 
 	var book pb.BookRes
 	err = r.db.QueryRowContext(
@@ -46,14 +46,19 @@ func (r *bookRepo) Create(ctx context.Context, b *pb.CreateBookReq) (*pb.BookRes
 }
 
 func (r *bookRepo) GetById(ctx context.Context, id string) (*pb.BookRes, error) {
-	query := `SELECT b.id, title, author_name, c.category_name  
+	query := `SELECT b.id, b.title, b.author_name, c.category_name  
 	FROM books b
 	INNER JOIN book_category c 
 		ON b.category_id = c.id 
 	WHERE b.id = $1`
 
 	var book pb.BookRes
-	err := r.db.GetContext(ctx, &book, query, id)
+	err := r.db.QueryRowContext(ctx, query, id).Scan(
+		&book.Id,
+		&book.Title,
+		&book.AuthorName,
+		&book.CategoryName,
+	)
 	if err != nil {
 		return nil, err
 	}
